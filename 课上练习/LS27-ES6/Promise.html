@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 异步编程与Promise</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+          promise将异步的代码写成同步的方式
+          new Promise(function(resolve,reject){
+            异步操作
+          }).then(function(){异步操作成功时调用，对应resolve},function(){异步操作失败时调用，对应reject})
+    */
+    setTimeout(function(){
+        console.log("时间到");
+    },3000);
+    console.log("同步代码1");
+    console.log("同步代码2");
+    /*
+        resolve:异步操作成功时调用的方法
+        reject:异步操作失败时调用的方法
+    */
+    new Promise(function(resolve,reject){
+        setTimeout(function(){
+            console.log("时间到");
+            resolve();
+        },3000)
+    }).then(function(val){
+        console.log("resolve被调用");
+        console.log(val);
+    },function(){
+
+    }).catch(function(){
+        /*捕获异常*/
+    }).finally(function(){
+        console.log("无论如何都会执行");
+    })
+</script>
+</html>

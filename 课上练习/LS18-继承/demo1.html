@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS对象-对象的继承</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+
+
+<script>
+    var superObj={
+        x:1,
+        y:2
+    }
+    var subObj_first=Object.create(superObj);
+    var subObj_second=Object.create(superObj);
+    subObj_first.__proto__.x=5;
+    console.log(subObj_second.x);//5
+
+    function Person(){
+        this.name=name;
+    };
+    Person.prototype.age=22;
+    Person.prototype.showName=function(){
+        console.log(this.name);
+    }
+    function Student(id){
+        this.id=id;
+    }
+    /*
+        person.name:Mike
+        person.__proto__.age
+        person__proto__.showName()
+    */
+    Student.prototype=new Person("Mike");
+    var s1 = new Student(2017001);
+    var s2 = new Student(2017002); 
+    console.log(s1.id,s2.id);
+    /*
+        s1自身上没有->s1的原型链__proto__ new Person("Mike")->New Person("Mike").prototype
+    */
+    /*
+        s1.__proto__ = Student.prototype
+        Student.prototype = person.__proto__
+        person.__proto__ = Person.prototype
+        所以：
+        s1.__proto__.__proto__ = Person.prototype
+
+    */
+    console.log(s1.age,s2.age);
+
+    
+</script>
+
+</body>
+</html>

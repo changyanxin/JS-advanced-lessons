@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS对象属性特性及其设置</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+
+
+<script>
+    /**************
+    数据属性
+    */
+    var obj={x:1};
+    Object.defineProperty(obj,'y',{enumerable:false});
+    console.log(obj);//输出x:1 y:undefined
+    for(var k in obj){
+        console.log(k,obj[k]);//只有x，配置参数的设置
+    }
+
+    var person = {'name':"jack"};
+    Object.defineProperty(person,'name',{
+        writable:false,//对象属性不可修改
+        configurable:false,//定义的当前属性是否能删除或者其他特性能否被配置,为true时可以删除当前属性
+        enumerable:true,//是否能被枚举
+        value:'mike'//定义当前属性值
+    });
+    person.name='lily';//无法赋值，writable当前属性不可改
+    delete person.name;//无法删除，configurable当前属性无法删除
+    for(var j in person){
+        console.log(person[j]);
+    }//可以遍历，enumerable特性可枚举
+
+    /**
+    添加属性:
+    1. 直接添加属性：默认特性为true
+    2. defineProperty()添加属性:默认特性为false
+    */
+    var obj1 = {x:1};
+    obj1.z=2;
+    Object.defineProperty(obj1,'w',{value:"xinxin"});
+    console.log(obj1);
+    for(var i in obj1){
+        console.log(obj1[i]);
+    }
+
+
+    /***************
+    访问器属性
+    */
+    var obj={
+        _name:"jack"
+    }
+    Object.defineProperty(obj,"name",{
+        configurable:false,
+        enumerable:true,
+        get(){
+            return this._name;
+        },
+        set(val){
+            this._name=val;
+        }
+    });
+    console.log(obj.name);
+    obj.name="lily";
+    console.log(obj.name);
+    delete obj.name;
+    console.log(obj.name);
+</script>
+
+</body>
+</html>

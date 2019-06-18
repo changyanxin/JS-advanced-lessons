@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于构造函数实现的原型继承</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+
+
+<script>
+    /*
+        Person.prototype = person1._proto_
+        Person.prototype.constructor = Person
+        Person.prototype._proto_ = Object.prototype
+        Object.prototype.constructor = Object
+        Object.prototype._proto_ = null
+
+    */
+    //对象._proto_=构造函数.prototype
+    function Person(username,age){
+        this.username=username;
+        this.age=age;
+    }
+    /*节省内存，定义在对象的_proto_上，对象共用sayHi()*/
+    Person.prototype.sayHi=function(){
+        console.log(this.username);
+    }
+    var person1=new Person('zhangsan',20);
+    var person2=new Person('lisi',19);
+    console.log(person1._proto_==Person.prototype);
+    person1.sayHi();
+    person2.sayHi();
+</script>
+
+</body>
+</html>

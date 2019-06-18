@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+	<meta charst="UTF-8"/>
+	<title>严格模式下语法和行为的改变</title>
+</head>
+<body>
+</body>
+<script>
+	
+
+	//非严格模式下，如果变量不使用var声明，自动提升为全局变量
+	function fn1(){
+		userName ="zhangsan";
+	}
+	fn1();
+	console.log(userName);//zhangsan
+
+	//严格模式下，变量必须使用var声明全局变量
+	function fn2(){
+		'use strict'
+		userName ="zhangsan";
+	}
+	fn1();
+	console.log(userName);//报错
+
+	function fn3(){
+		//普通函数内部this指向window对象
+		console.log(this);
+	}
+
+	function fn4(){
+		//严格模式下this指向undefined
+		'use strict'
+		console.log(this);
+	}
+
+	//判断this的指向是否为全局模式
+	function fn5(){
+		var result = (this === undefined?true:false);
+		return result;
+	}
+	console.log(fn5());//false
+
+	function fn6(){
+		'use strict'
+		var result = (this === undefined?true:false);
+		return result;
+	}
+	console.log(fn6());//true
+
+
+	var str = "abcdef";
+	str.length = 1;//装箱自动回收
+	console.log(str.length);//6
+
+	//严格模式下禁止删除只读属性和未定义的变量
+	//str的length为只读属性
+	'use strict'
+	var str = "abcdef";
+	str.length = 1;//装箱自动回收
+	console.log(str.length);//6
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery</title>
+
+    <style type="text/css">
+     	div{
+     		background-color:gray;
+     		margin-top: 30px;
+
+     	}
+    </style>
+
+</head>
+<body>
+	<div>少司命</div>
+	<div>少司命</div>
+	<div>少司命</div>
+ 	
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script>
+	// $("div").mouseover(function(){
+	// 	$(this).css("background-color","blue");
+	// })
+	// $("div").mouseout(function(){
+	// 	$(this).css("background-color","gray");
+	// })
+	// $("div").click(function(){
+	// 	$(this).css("background-color","red");
+	// })
+
+	/*返回值依旧为当前包装集*/
+	$("div").mouseover(function(){
+		$(this).css("background-color","blue");
+	}).mouseout(function(){
+		$(this).css("background-color","gray");
+	}).click(function(){
+		$(this).css("background-color","red");
+	})
+	
+</script>
+
+
+
+</html>

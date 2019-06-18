@@ -1,0 +1,18 @@
+//后缀名为.json的文件，保存数据
+//也可以作为前后端的数据传输
+{
+	"username":"zhangsan",
+	"age":20,
+	"add":{
+		"address":"石家庄",
+		"addcode":"1212121"
+	}
+}
+
+[
+	{
+		"imgUrl":"images/upload/1.jpg",
+		"linkUrl":"http://www.baidu.com",
+		"description":"运动会"
+	}
+]

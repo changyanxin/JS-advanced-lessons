@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body id="mybody">
+	<input type="button" value="绑定点击事件" id="btn1"/>
+	<br/>
+	<input type="button" value="绑定点击事件" id="btn2"/>
+ 	<br/>
+ 	<input type="button" value="绑定点击事件" id="btn3"/>
+	<br/>
+ 	
+ 	<img src="shaosiming.jpg" alt=""/>
+ 	
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script>
+	/*
+		jquery包装集.事件方法(回调函数)
+	*/
+	$("#btn1").click(function(){
+		alert("按钮被点击了");
+	})
+	$(":button").click(function(){
+		alert("按钮被点击");
+	})
+	$("img").mouseover(function(){
+		//$("img").css("border","4px solid red");
+		$(this).css("border","4px solid red");	
+	})
+	$("img").mouseout(function(){
+		$("img").css("border","none");	
+	})
+</script>
+
+
+
+</html>

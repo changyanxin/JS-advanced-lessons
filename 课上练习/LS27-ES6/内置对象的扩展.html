@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6-内置对象扩展</title>
+	<style type="text/css">
+     	
+    </style>
+</head>
+<body>
+</body>
+
+<script>
+//String的扩展	
+	let str = "abcdefg";
+	for(let i of str){
+		console.log(i);
+	}
+	str.repeat(4);
+
+//RegExp的扩展
+	let reg1 = /abc/gi;
+	let reg2 =  new RegExp("abc",'gi');
+	let reg3 = new RegExp(/abc/gi);
+	let reg4 = new RegExp(/abc/gi,'i');
+	//正则表达式的对象.flags获取正则表达式得修饰符
+	console.log(reg1.flags);
+	//sticky y修饰符 他会从上一次匹配成功的位置开始向后匹配
+	let str1 = "aaa_aa_a";
+	let reg5 = /a+/g;
+	let reg6 = /a+/y;
+	console.log(reg5.exec(str1));
+	console.log(reg5.exec(str1));
+
+	console.log(reg6.exec(str1));
+	//上一次匹配结果成功的索引位置
+	console.log(reg6.lastIndex);
+	console.log(reg6.exec(str1));
+	//可以判断正则对象是否设置了sticky属性
+	console.log(reg6.sticky);
+
+//对数组的扩展
+/*类数组：对象有length属性*/
+	//Arrar.from()静态方法，直接定义在构造函数上，将类数组转化为数组结构
+	//arguments为类数组结构
+	console.log(Array.from("abcdefg"));
+	function fn1(a,b){
+		Array.from(arguments);
+	}
+	fn1(1,2,3);
+	//Array.of()静态方法将单个元素转化为数组
+	//call(转换的对象，参数，)
+	//apply(转换的对象，参数数组，)
+	console.log(Array.of(1,2,3));
+	//Array.prototype.copyWithin(target,start,end) 复制数组里的特定元素到特定位置
+	//target:复制的目标位置
+	//start：复制元素得起始位置
+	//end：复制元素的结束位置
+	let arr1 = [1,2,3,4,5,6];
+	arr1.copyWithin(0,2,4);
+	//Array.prototype.find(callback())遍历数组中的元素，是否能满足回调函数的验证条件，回调函数的返回值，返回满足函数的第一个数组元素
+	let arr2 = [10,15,20,25,30,35,40];
+	let e1 = arr2.find(function(element){
+		return element > 19;
+	});
+	console.log(e1);
+	//Array.prototype.findIndex(callback()),同Array.prototype.find(callback()),返回的是索引值
+	let e1Index = arr2.findIndex(function(element){
+		return element > 19;
+	});
+	console.log(e1Index);
+	/*
+	均为原型方法：
+		fill(value,start,end):向start到end中间填充value
+		keys():获取键的值
+		values():获取数组具体值
+	*/
+
+//对object的扩展
+	//定义对象时结构的简化，属性可以写成变量的形式，方法对应的函数直接省略function，函数名(){}
+	let username = "lily";
+	let obj = {
+		username,
+		fn1(){
+			console.log(this.username);
+		}
+	};
+	//属性值可以为变量
+	let bar = "foo";
+	let obj1 = {
+		[bar]:"male"
+	};
+	console.log(obj1);
+	//Object.assign()
+	let obj2 = {username:"zhanhgsan"};
+	let obj3 = {age:20};
+	Object.assign(obj2,obj3);
+	console.log(obj2.keys());
+	console.log(obj2.values());
+	console.log(obj2.entries());
+
+</script>
+
+
+
+
+</html>

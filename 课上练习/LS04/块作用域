@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+	<meta charst="UTF-8"/>
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	//字面量：具体的值
+
+	//ES ECMAScript简写   语言标准
+	//ES5 ES6最主流的两个版本
+
+	//JavaScript在ES5的标准下没有块作用域
+	if(true){
+		var a = 1; //全局变量
+	}
+	a=2;
+	console.log(a);
+
+	if(false){
+		var a = 1; //全局变量
+	}
+	console.log(a);//undefined,false不执行块内元素
+
+	for(var i=0; i<3;i++){
+
+	}
+	console.log(i);//3，无块作用域的概念，i为全局变量
+</script>
+</html>

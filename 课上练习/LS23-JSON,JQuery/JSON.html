@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+    <ul id="list">
+    	
+    </ul>
+</body>
+
+<script>
+	/*
+		json对象数据传输，数据存储
+	*/
+	/*
+		json字符串和js对象可以进行相互的转换，并且js对象可以很容易的渲染到页面中，所以可以将后台的json对象转换为js对象
+	*/
+	var jsObj = {"uesrname":"zhangsan","age":20};
+	var ulObj = document.getElementById("list");
+	for(var i in jsObj){
+		var liNode = document.createElement("li");
+		liNode.innerHTML = i + ":" + jsObj[i];
+		ulObj.appendChild(liNode);
+	}
+	/*
+		JSON.stringify(js对象)
+		包括js对象数组结构转化为json字符串
+	*/
+	var jsObject = {
+		"username":"zhyangsan",
+		"age":20,
+		"address":{"add":"石家庄","addcode":"11322"}
+	};
+	//var jsonStr = JSON.stringify(jsObject);
+	var jsonStr = JSON.stringify(jsObject,function(k,v){
+			if(typeof v == "number"){
+				return undefined;
+			}
+			return v;
+	});
+	console.log(jsonStr);
+	console.log(typeof jsonStr);
+
+	//var jsObject2 = JSON.parse(jsonStr);
+	var jsObject2 = JSON.parse(jsonStr,function(k,v){
+		console.log(k,v);
+	});
+	console.log(jsObject2);
+	console.log(typeof jsObject2);
+</script>
+
+
+</html>

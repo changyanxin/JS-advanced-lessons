@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+    
+</body>
+
+<script>
+  /*
+      静态方法：UTC(),now(),parse()
+  */
+    var d1 = Date.parse("25 Dec 2018 12:12:12 GMT");
+    console.log(d1);
+
+    var ss = Date.parse("2019-05-04");
+    console.log(ss);
+    var ss1 = Date.parse(ss);
+    console.log(ss1);
+
+    var date2 = new Date();
+    var ss2 = Date.parse(date2);
+    console.log(ss2 > ss);
+
+    /*
+        原型方法：getMonth()    0
+            getDay():一周中的第几天    0
+            getDate():
+    */
+
+
+</script>
+
+
+</html>

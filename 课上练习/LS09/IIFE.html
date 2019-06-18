@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>IIFE模式</title>
+</head>
+
+<body></body>
+
+<script>
+
+
+//总结：立即执行函数表达式
+//      避免变量污染形成独立的空间变量仅在作用域内起作用
+
+
+	//IIFE模式即立即执行的函数表达式
+
+	//(function 函数名(参数){函数体}(实参))
+	(function max(x,y){
+		return x>y?x:y;
+	}(2,3));
+
+	//另一种表达形式
+	(function min(x,y){
+		return x>y?y:x;
+	})(2,3);
+
+	(function (x,y){
+		return x>y?y:x;
+	})(2,3);
+
+	//为解决重复定义，变量污染的问题使用IFFE模式包裹新的作用域
+
+//避免变量共享错误
+	//循环时arr[i]定义为函数，但不执行，循环结束时执行函数共享i=10这个变量
+	function foo(){
+		var arr1=[];
+		for(var i = 0; i<10; i++){
+			arr[i] = function(){
+				return i;
+			}
+		}
+		return arr1;
+	}
+	var arr2 = foo();
+	arr2[0]();//10
+
+	// arr1[0] = function(){
+	// 	return i;
+	// }
+	// arr1[1] = function (){
+	// 	return i;
+	// }
+
+	//使用IIFE模式避免变量共享，每一次循环时都执行形成10个作用域变量j即i不共享   不共享   不共享以达到期望的结果
+	function foo(){
+		var arr1=[];
+		for(var i = 0; i<10; i++){
+			arr[i] = (function(j){
+				return j;
+			})(i)
+		}
+		return arr1;
+	}
+	var arr2 = foo();
+	arr2[0]();//0,期望值
+
+	
+
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+    
+</body>
+
+<script>
+   /*
+        实例化的方法：
+         1. 年、月必选，其它可选(年，月，日，时，分，秒，毫秒)
+   */
+   var date1=new Date();
+   var year=date1.getFullYear();
+   var month=date1.getMonth();
+   var date=date1.getDate();
+
+   var date2=new Date(year,month,date);
+   console.log(date2);
+
+   //指明时间日期的字符串
+   var date3=new Date("2019-3-19");
+   console.log(date3);
+
+   //指明一个以毫秒为单位的数字类型
+   var date4=new Date(Date.now());
+   console.log(date4);
+    
+    /*
+        本地时间：当前所处时区的标准时间
+        世界标准时间：UTC（格林威治时间）  GMT
+    */
+</script>
+
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS对象属性特性简介</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+
+
+<script>
+    /*
+        1. JavaScript是基于对象的继承方式
+    */
+    var obj = {
+        num:1,
+        str:'hi',
+        sayHi:function(){
+            console.log(this.str);
+        }
+    };
+    var newObj = Object.create(obj);
+    console.log(newObj._proto_ == obj.prototype);
+    console.log(newObj.num);
+    newObj.sayHi();
+
+    /*
+        obj.__proto__ = Object.prototype
+        Object.__proto__.type = null
+   */
+   console.log(obj._proto_);//Object.prototype
+   console.log(newObj._proto_);//obj.prototype
+   console.log(newObj._proto_._proto_);//Object.prototype
+    console.log(obj._proto_._proto_);//null
+
+
+
+    
+</script>
+
+</body>
+</html>

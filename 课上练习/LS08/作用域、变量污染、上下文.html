@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+	<meta charse="UTF-8"/>
+	<title>作用域</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//作用域:变量和函数可使用的范围
+	var a = 1;
+	function fn1(){
+		console.log(a);//1
+		var b = 2;
+		var c = 3;
+		function fn2(){
+			var c = 30;
+			var d = 4;
+			console.log(c);
+		}
+		fn2();//30
+		console.log(c);//3
+		console.log(d);//报错
+	}
+	fn1();//调用fn2时报错，fn2作用域在fn1内
+
+	//函数和变量在完成定义之后作用域都确定，和调用形式没有关系
+	var userName = "jack";
+	function foo(){
+		userName = "rose";
+		console.log(userName);
+	}
+	function bar(){
+		var userName = "道森";
+		foo();//rose
+		console.log(userName);//道森
+	}
+	bar();
+
+	//ES5无块级作用域，只有函数的局部作用域
+	if(true){
+		var a = 2;
+	}
+	console.log(a);
+
+	//ES6有块级作用域，使用let定义变量限制在当前块内
+	if(true){
+		let b = 2;
+	}
+	console.log(b);
+
+	var userID = 5;
+	document.onclick = function(){
+		userID = 10;
+	}
+	/**/
+	//变量污染，重复定义了同一个变量
+	// if(true){
+	// 	var userID = 30;
+	// }
+	(function(){
+		var userID = 30;
+	})()
+
+	//上下文(指的是某行代码的上下文)，当某行代码执行过程中，她的上下文环境当前作用域包含的变量，函数调用栈，this指向
+	var x = 5;
+	var y = 6;
+	function foo(){
+		var a = 1;
+		var b = 2;
+		function bar(){
+			var c = 3;
+			var d = 4;
+		}
+		bar();
+	}
+	foo();
+</script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS对象相关操作</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+
+
+<script>
+    /*
+    创建JS对象的方式
+    1. 通过对象字面量的值直接创建对象
+        var obj={
+            属性名:属性值,
+            方法名:方法值
+        }
+    2. 通过Object的create静态方法创建对象
+        var obj1={};var obj2=Object.create(obj1);//obj2的_proto_属性上是obj1
+    3. 通过构造函数的方式创建对象
+        function Person(){};
+        var person=new Person();
+    */
+    var obj={
+        userName:"zhangsan",
+        age:20
+    };
+    var obj1=Object.create(obj);
+    console.log(obj);
+    console.log(obj1);//obj在obj1的原型上
+    
+    /*
+    //原有写法
+    function Person(userName,age){
+        this.userName=userName;
+        this.age=age;
+        this.sayHi=function(){
+            console.log("Hi"+this.userName);
+        }
+    };
+    */
+    function Person(userName,age){
+        this.userName=userName;
+        this.age=age;
+    }
+    Person.prototype.sayHi=function(){
+        console.log("Hi"+this.userName);    
+    }
+    var person1=new Person("zhangsan",20);
+    console.log(person1._proto_ == Person.prototype);
+    console.log(person1);
+
+
+</script>
+
+</body>
+</html>

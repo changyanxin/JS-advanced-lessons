@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style type="text/css">
+     	
+    </style>
+
+</head>
+<body>
+	
+	
+</body>
+
+<script>
+	/*
+		添加剩余操作符的参数，会得到一个数组接受剩余的实参，写在其他参数的后面
+	*/
+	function fn1(x,...rest){
+		console.log(x);
+		console.log(rest);
+	}
+	fn1(1,2,3,4,5,6,7,8,9);
+
+	/*
+		spread扩展操作符
+		rest的逆过程，将一个集合打散为打个元素
+	*/
+	function fn2(x){
+		console.log(x);
+		console.log(arguments);
+	}
+	fn2(1,...[2,3]);//等效于fn2(1,2,3)
+</script>
+
+
+
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style type="text/css">
+     	div{
+     		height:200px;
+     		width:200px;
+     		background-color: red;
+     	}	
+    </style>
+
+</head>
+<body>
+	<div id="div1"></div>
+	<a href="http://www.baidu.com" id="baidu">百度</a>
+</body>
+
+<script>
+	/*
+		DOM2级事件响应处理
+		addEventListener(事件,回调函数,是否为捕获的方式触发事件)
+	*/
+	var div1 = document.getElementById("div1");
+	var baidu = document.getElementById("baidu");
+	div1.addEventListener("click",function(e){
+		console.log("div被点击了");
+		//事件属性：target事件的触发对象
+		console.log(e);
+	});
+	baidu.addEventListener("click",function(e){
+		/*阻止元素的默认跳转*/
+		e.prevevtDefault();
+		/*e.timeStamp获取事件不准确*/
+		var num = e.timeStamp;
+		console.log(new Date(num));
+	});
+</script>
+
+
+
+
+</html>

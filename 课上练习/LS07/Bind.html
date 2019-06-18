@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+	<meta charse="UTF-8"/>
+	<title>bind</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var objA = {
+		"objName":"aaa",
+		"foo":function(){
+			console.log(this.objName);
+		}
+	}
+	var objB = {"objName":"bbb"};
+	var foo2 = objA.foo.bind(objB);
+	foo2();
+
+	var obj = {
+		x:3
+	};
+	function fn1(){
+		function fn2(){
+			console.log(this.x);
+		}
+		return fn2;
+	}
+	obj.fn3=fn1();
+	obj.fn4=fn1();
+
+	obj.fn3();
+	obj.fn4();
+
+
+	var obbj = {
+		x:1,
+		func1:dunction(){
+			//var that = this;拥有穿透性
+			console.log(this.x);
+		}
+		console.log(this.x);
+		func2
+	}
+	obbj.func1();
+</script>
+	
+</html>

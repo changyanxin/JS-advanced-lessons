@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS对象属性特性简介</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+
+
+<script>
+    var objProto = {z:3};
+    var obj=Object.create(objProto);
+    obj.x=1;
+    obj.y=2;
+    console.log(obj);
+    console.log(obj.x,obj.y,obj.z);
+    console.log(obj._proto_ == objProto);
+    console.log(obj.toString());
+    //对象里面的某些属性和方法无法被遍历到
+    for(var key in obj){
+        console.log(key + ":" + obj[key]);
+    }
+
+
+
+
+    /*JS对象属性(数据属性)特性简介及其设置*/
+
+    var obj={x:1};
+    Object.defineProperty(obj,'y',{enumerable:false});
+    console.log(obj);//输出x:1 y:undefined
+    for(var k in obj){
+        console.log(k,obj[k]);//只有x，配置参数的设置
+    }
+</script>
+
+</body>
+</html>

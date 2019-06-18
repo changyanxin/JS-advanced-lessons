@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+	<meta charst="UTF-8"/>
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+
+	//number  string  boolean
+	//Number()  String()  Boolean()     构造函数
+
+	//基本数据类型，变量的_proto_属性与构造函数的prototype属性完全相等
+	//num._proto_==Number.prototype
+	var num1 = 20;
+	console.log(num1._proto_);
+	console.log(Number.prototype);
+
+
+	//基本数据类型在操作过程中会有自动装箱的过程，生成临时对象，临时对象在使用完成之后，会被释放
+	//"一切皆对象"的解释
+	var num = 10;
+	num.toString();
+
+	var num=10;
+	var numObj = new Number(num);
+	numObj.toString();
+
+	mun.p=10;
+	var t = num.p;
+	console.log(t);//undefined
+
+	var num1 = 11.26;
+	var numObj1 = new Number(num1);
+	console.log(numObj1);
+	console.log(num1.toFixed(1));//保留1位小数
+
+
+
+
+	//字符串的装箱
+	var str = "abcde";
+  	str.charAt(2);
+
+  	var str = "abcde";
+  	var  strObj = new String(str);
+  	//charAt(index)返回特定索引位置的字符
+  	strObj.charAt(2);
+
+  	console.log("B".localeCompare("A"));//1
+
+
+
+
+  	//字符串的操作：
+  	var str = "abcdefgh";
+  	//返回特定索引位置的字符
+  	str.charAt(0);
+  	//返回特定缩影位置的字符的unicode码
+  	str.charCodeAt(0);
+  	//slice(截取起始位置，截取结束位置)
+  	str.slice(0,3);
+  	str.slice(1,-1);//bcdefg
+  	str.slice(2);//cdefgh
+  	str.slice(-2);
+  	//sub(截取的起始位置，截取的长度)
+  	str.sub(0,3);
+  	//substring(截取的起始位置，截取的结束位置--可选)
+  	str.substring(0,3);
+	str.substring(3,0);//abc，当start>end时，交换位置
+	str.substring(-5,9);//如果超出字符串的范围，则自动截断，即<0 或 >length
+	var str1 = "abc*def*gh";
+	//split(截断的符号，阶段的限制--可选),返回值为数组元素或数组
+	str.split("*");//["abc","def","gh"]
+	str.split("*",2);//["abc","def"]
+	str.split("");//["a","b",]
+	//indexOf（未知索引值的字符，开始查找的字符--可选）
+	str.indexOf("d",1);
+	str.indexOf("d",4);//从索引值为4的字符处开始查找
+
+
+	var str2 = "      abc   d   ";
+	//trim()去除字符串两边的空白字符，内部空白字符不去除
+	str2.trim();
+	//contact()
+	str2.contact("hello world");
+
+	//Boolean()
+	Boolean(null);//false
+</script>
+</html>

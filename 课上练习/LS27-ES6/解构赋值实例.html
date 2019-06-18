@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6-解构赋值</title>
+	<style type="text/css">
+     	
+    </style>
+</head>
+<body>
+</body>
+
+<script>
+	function fn1({x=0,y=0} = {}){
+		return [x,y];
+	}
+	console.log(fn1);
+	console.log(fn1({x:3}));
+
+/*解构赋值的常见应用*/
+	//交换变量
+	let [x,y] = ["a","b"];
+	[y,x] = [x,y];
+	console.log(x,y);
+	//从函数中返回多个值
+	function example(){
+		return [1,2,3];
+	}
+	let [a,b,c] = example();
+	console.log(a,b,c);
+	//提取json数据
+	let json1 = {
+		"username":"zhangsan",
+		"course":["高等数学","大学英语"],
+		"age":20
+	};
+	/*JSON MATH都是对象，没有构造函数
+	JSON.parse()
+	*/
+	let jsonstr = JSON.stringify(json1);
+	json1 = JSON.parse(jsonstr);
+
+	let {username} = json1;
+	console.log(username);
+</script>
+
+
+
+
+</html>

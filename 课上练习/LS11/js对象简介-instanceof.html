@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS对象简介</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+
+
+<script>
+	/*
+        对象 instanceof 构造函数
+        1. 判断对象能否使用构造函数实例化得到
+        2. 判断对象的原型链上是否能够找到函数的原型
+
+        对象._proto_._proto_(长度不确定) == 函数.prototype
+    */
+
+    console.log(Object instanceof Function);
+    console.log(Object._proto_ == Function.prototype);
+    console.log(Object instanceof Object);
+    console.log(Object._proto_ == Object.prototype)
+    console.log(Math instanceof Object);//true
+    console.log(Math instanceof Function);//false
+    console.log(JSON instanceof Object);//true
+    console.log(JSON instanceof Function);//false
+
+    function Person(userName,age){
+        this.userName=userName;
+        this.age=age;
+    }
+    var p = new Person("zhangsan",20);
+    console.log(p instanceof Person);
+    console.log(Person instanceof Object);
+</script>
+
+</body>
+</html>

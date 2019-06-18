@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery</title>
+
+    <style type="text/css">
+     	div{
+     		width:400px;
+     		height:400px;
+     		background-color: black;
+
+     	}
+    </style>
+
+</head>
+<body>
+	<div></div>
+	<button id="slidedown">slidedown</button>
+	<button id="slideup">slideup</button>
+	<button id="fadein">fadein</button>
+	<button id="fadeout">fadeout</button>
+	<button id="animate">animate</button>
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script>
+	/*
+		改变元素的高度来切换显示和隐藏
+	*/
+	$("#slideup").click(function(){
+		$("div").slideUp(4000);
+	})
+	$("#slidedown").click(function(){
+		$("div").slideDown(4000);
+	})
+	/*
+		切换改变元素的透明度
+	*/
+	$("#fadein").click(function(){
+		$("div").fadeIn();
+	})
+	$("#fadeout").click(function(){
+		$("div").fadeOut();
+	})
+	$("#animate").click(function(){
+		$("div").animate({
+			"margin-left":"500px"
+		},3000);
+	})
+</script>
+
+
+
+
+</html>

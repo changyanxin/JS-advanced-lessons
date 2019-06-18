@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+	<meta charst="UTF-8"/>
+	<title>switch详解</title>
+</head>
+<body>
+</body>
+<script>
+	var index=1;
+	switch(index){
+		case 1:
+			console.log("Monday");
+			break;
+		case 2:
+			console.log("Tuseday");
+			break;
+		default:
+			console.log("fault");
+			break;
+	}
+
+	//比较的是值和类型，不发生隐式数值转换的过程
+	var index=1;
+	switch(index){
+		case '1':
+			console.log("Monday");
+			break;
+		case 2:
+			console.log("Tuseday");
+			break;
+		default:
+			console.log("fault");
+			break;
+	}
+
+	//switchde语句的穿透性
+	var index=1;
+	switch(index){
+		case 1:
+			console.log("Monday");
+		case 2:
+			console.log("Tuseday");
+		default:
+			console.log("fault")
+	}
+	//switch语句穿透性的应用
+	var index=1;
+	switch(index){
+		case 1:
+			
+		case 2:
+
+		case 3:
+
+		case 4:
+
+		case 5:
+			console.log("Weekdays");
+			break;
+		case 6:
+
+		case 7:
+			console.log("Weekends");
+			break;
+	}
+
+	//对象的索引，key值
+	var obj1 = {"name":"zhangsan","age":"20"};
+	obj1._proto_.sex = "male";
+	for(var i in obj1){
+		console.log(i);
+	}
+	//for...in 遍历数组,遍历原型链上的属性
+	var arr1 = [1,2,,3];
+	for (var j in arr1){
+		console.log(j,arr[j]);
+	}
+</script>
+</html>

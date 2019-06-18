@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型方法与静态方法的区别,再谈constructor</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+
+
+<script>
+     /*
+       原型方法：函数.prototype.方法构造函数的实例化对象可以调用构造函数的原型方法
+        静态方法：定义在构造函数上的方法
+    */
+    /*constructor：函数原型.constructor=函数*/
+
+   function BaseClass(){
+
+   }
+   BaseClass.fn1 = function(){
+        console.log("静态方法");
+   }
+   BaseClass.fn1();
+   var base = new BaseClass();
+   BaseClass.prototype.fn2 = function(){
+        console.log("原型方法");
+   }
+   console.log(base.__proto__ == BaseClass.prototype);
+   base.fn2(); 
+
+
+   /*
+        constructor存在于构造函数的prototype上的属性
+    */
+    function Person(userName,age){
+        this.userName = userName;
+        this.age = age;
+    }
+    Person.prototype.constructor === Person;
+    var person = new Person("zhangsan",20);
+    person.constructor == Person;
+
+    var obj = new Object();
+    obj.constructor == Object;
+</script>
+
+</body>
+</html>

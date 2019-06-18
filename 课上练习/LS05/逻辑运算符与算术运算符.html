@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+	<meta charst="UTF-8"/>
+	<title>算术运算符与逻辑运算符的相关介绍</title>
+</head>
+<body>
+</body>
+<script>
+	// =表示赋值，==表示判断数值，===表示先判断类型，再判断数值
+
+	var a=45;
+	if(a==45){
+		console.log("equals");
+	}
+
+	var a=15;
+	if(15==a){
+		console.log("equals");
+	}
+
+	//== 隐式的类型转换
+	var a1 = 65;
+	var a2 = 22;
+	if(a1 == a2){
+
+	}
+	// ===先判断类型再判断值
+	if(a1 === a2){
+
+	}
+
+	console.log(NaN === NaN);//false
+	console.log({} === {});//false,比较堆分配的内存
+
+	var obj1=new String("xyz");
+	var obj2=new String("xyz");
+	console.log("xyz"===obj1);
+
+	// && 两侧的操作数不是布尔类型时，左操作数为true返回右操作数
+	
+	// ||两侧的操作数不是布尔类型时，左操作数为true返回左操作数
+
+	console.log(20 && 0);//0
+	console.log(null && 10);//null
+	console.log({x:2} && {name:"Jack"});
+	console.log({} && "world");
+	
+	var sorce = 76;
+	console.log(sorce>90 && "优");
+	console.log((sorce>75&&sorce<=90) && "良");
+	console.log((sorce>60&&sorce<=75) && "及格");
+	console.log(sorce<=60 && "不及格");
+
+	console.log(sorce>90 && "优") || (sorce>75 && "良");
+
+	//switch()与case值是全等的类型，值与类型必须都相等
+	switch(true){
+		case score>90 :
+			console.log("perfect");
+			break;
+		case score>80 :
+			console.log("very good");
+			break;
+	}
+
+	// ||操作做函数的默认值
+	//ES5中支持函数默认值的方式
+	//定义函数的形参与调用函数的实参个数可以不一样
+	function sum(x,y,z){
+		//console.log(x,y,z);
+		x=x || 1;
+		y=y || 2;
+		z=z || 3;
+
+		return x+y+z;  //此时相当于变量只声明未赋值
+	}
+	console.log(sum());//undefined
+	console.log(sum(4,5,6));//15
+	console.log(sum(false,5,6));//隐式类型转换，false转化为0
+
+	//ES6中摄制默认值
+	function sum1(x,y=1,z=6){
+		return x+y+z;
+	}
+	console.log(sum(1));
+</script>
+</html>

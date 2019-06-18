@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style type="text/css">
+     	
+    </style>
+
+</head>
+<body>
+	
+	
+</body>
+
+<script>
+	/***********************************重要***********************************************************/
+	let obj = {
+		objName:"obj1",
+		showName:function(){
+			let intervalId = setTimeout(function(){
+				console.log(this); //window
+				console.log(this.objName);
+			},3000);
+		}
+	};
+	obj.showName();
+	
+	/*
+		(参数)=>{函数体}	
+		箭头函数在多层嵌套时改变函数的指向
+	*/
+	var obj1 = {
+		objName:"obj1",
+		showName:function(){
+			var intervalId = setTimeout(()=>{
+				console.log(this);
+				console.log(this.objName);
+			},3000);
+		}
+	};
+	obj1.showName();
+	
+</script>
+
+
+
+
+</html>

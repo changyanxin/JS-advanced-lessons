@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style type="text/css">
+     	
+    </style>
+
+</head>
+<body>
+	
+	
+</body>
+
+<script>
+	/*
+		不会阻塞主线程的执行，在满足特定条件时反馈回到主线程上
+	*/
+	for(var i = 0; i < 1000000; i++){
+
+	}
+	console.log("同步执行");
+	setTimeInterval(function(){
+		console.log("异步执行");
+	},1000);
+	console.log("主程序");
+	//同步执行：必须一个一个逐句执行
+	var i = 0;
+	console.log(i);
+	for(var i = 0; i < 1000; i++){
+		console.log(i);
+	}
+	//异步执行：相当于在主线程上开一个分支，当收到反馈是执行
+	//形式：回调函数,事件监听机制，发布订阅，Promise
+	window.onload = function(){
+		console.log("页面加载完成");
+	}
+	console.log("主线程");
+
+	var i = 0;
+	var intervalId = setInterval(function(){
+		console.log(i++);
+	},3000)
+</script>
+
+
+
+
+</html>

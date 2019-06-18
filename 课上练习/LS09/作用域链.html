@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>作用域链</title>
+</head>
+
+<body>
+	<div id="div1" style="width:100px;height:100px"></div>
+</body>
+
+<script>
+	//username查找过程（由内而外）：匿名函数内->全局作用域
+	var div1 = document.getElementById("div1");
+	var username = "zhangsan";
+	div1.onclick = function (){
+		this.username = username;
+	}
+</script>
+</html>

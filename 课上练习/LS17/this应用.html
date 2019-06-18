@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS中的this</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+
+
+<script>
+    /*
+    this的四种应用场景：调用此函数的主体
+    1. 一般函数下的this：用此特性判断当前是否为严格模式，非严格模式下this->window，可以添加删除修改全局对象属性，严格模式('use strict')下this->undefined
+    2. 对象方法中的this
+    3. 构造函数中的this指代通过new新创建的主体
+    4. 间接调用中的this（call，apply）指向第一个参数
+    */
+
+    function thisText(){
+        console.log(this);
+        console.log(this === window);
+    }
+    thisText();//被window调用，非严格模式下
+
+    function thisText1(){
+        'use strict';
+        console.log(this);
+        return this===undefined ? true : false; 
+    }
+    thisText1();
+
+    //直接定义在对象下的方法，调用主体是当前对象，前提是没有函数嵌套
+    var point = {
+        x:1,
+        y:2,
+        moveTo:function(x,y){
+            this.x=x;
+            this.y=y;
+        }
+    }
+    point.moveTo(2,3);
+    console.log(point);
+
+    function Point(x,y){
+        this.x=x;
+        this.y=y;
+        this.moveTo=function(x,y){
+            this.x=x;
+            this.y=y;
+        }
+    }
+    var p = new Point(10,10);
+    //this指向函数调用的主体p
+    p.moveTo(15,15);
+
+    var objA={name:'AA',x:1};
+    var objB={name:'BB',x:2};
+    function test(m){
+        console.log(this.name);
+        this.x=m;
+        console.log(this.x);
+    }
+    objA.fun=test;
+    objA.fun();
+    /*
+    方法A.call(对象,arg1,arg2,arg3...):切换方法的调用主体从而改变this的指向
+
+    方法B.apply(要切换的调用对象，[arg1,arg2,arg3...])
+    */
+    objA.fun.call(objB,3);
+</script>
+
+</body>
+</html>

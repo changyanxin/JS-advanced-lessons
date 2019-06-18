@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery</title>
+
+    <style type="text/css">
+     	div{
+     		height:200px;
+     		width:200px;
+     		background-color: red;
+     	}
+    </style>
+
+</head>
+<body>
+	
+	<div id="div1"></div>
+	<button id="btn">animate</button>
+ 	
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script>
+	/*
+		$("").slideUp()
+		$("").slideDown()
+		$("").fadeIn()
+		$("").fadeOut()
+	*/
+
+	$("#btn").click(function(){
+		/*动画的同步执行*/
+		// $("div").animate({
+		// 	"margin-left":"400px",
+		// 	"margin-top":"200px"
+		// },3000);
+		/*动画的顺序执行*/
+		$("#div1").animate({
+			"margin-left":"400px"
+		});
+		$("#div1").animate({
+			"margin-top":"400px"
+		});
+		$("#div1").animate({
+			"margin-left":"0px"
+		});
+		$("#div1").animate({
+			"margin-top":"0px"
+		});
+	})
+</script>
+
+
+
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式的方法及实例</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+    
+</body>
+
+<script>
+	
+    /*
+		String.prototype
+		  str.replace(reg,"替换的内容");
+            str.match(reg)
+                返回值是一个数组或者null
+                [整个正则匹配到的内容，分组【级配得到的内容，开始匹配位置的索引]
+            str.search()
+                在str中检索符合正则表达式规则的内容，如果检索到返回其索引值，如果没有检索到内容，返回-1
+        RegExp.prototype
+            reg.test(字符串)
+                验证字符串是否符合正则，符合为true，不符合为false
+            reg.exec(字符串)
+
+    */
+    var reg = /(ss)abc\d/gi;
+    var str = "kkafd ssabc2";
+    console.log(str.match(reg));
+
+    /*验证压缩包*/
+    /*
+        (.+):文件名字
+        \.:转义字符，表示普通字符.
+        (rar|zip|7zip|tgz)：从其中任意取一个类型
+        $:表示以前面的分组结尾
+    */
+    var reg = /(.+)\.(rar|zip|7zip|tgz)$/;
+
+    var reg1 = /^#[a-fA-F0-0]{6}/;
+    /*
+        ^#表示以#开头，区分^在中括号里(表示取反)
+        [a-fA-F0-9] 表示集合，从其中任取一个字符 a-f A-F 0-9
+        {6}表示之前的字符出现6次
+        $表示必须要以前面的字符结尾
+    */
+</script>
+
+
+</html>

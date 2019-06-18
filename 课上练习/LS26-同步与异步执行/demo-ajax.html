@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+
+    <style type="text/css">
+     	
+    </style>
+
+</head>
+<body>
+	<img src="shaosiming.jpg"/>
+	<span id="title"></span>
+	<button id="btn">jq ajak</button>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script>
+	/*
+		在前端页面实现jQuery ajak请求，ajak请求指明请求的后端程序的地址，后端程序接收到请求，做出响应，前端接收后端程序的响应内容，并在前端使用
+		前后端文件必须都在服务器上面
+	*/
+	/*
+		ajax可以实现页面的局部刷新
+	*/
+	$("#btn").click(function(){
+		$.ajax({
+			url:"./sever.php",
+			type:"get",
+			success:function(){
+				$("#title").html(data);
+				console.log(data);
+			},
+			error:function(){
+				console.log(err);
+			}
+		})
+	})
+</script>
+
+
+
+
+</html>

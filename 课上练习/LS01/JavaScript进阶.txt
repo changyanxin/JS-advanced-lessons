@@ -1,0 +1,24 @@
+2019.2.25  第一节课
+    控制台调试方法：ctrl+l（清空之前内容）   ctrl+r(刷新)  ctrl+鼠标滚轮（将当前位置放大）
+    控制台换行方法：shift+enter
+    错误信息：console.error(1)
+    Sources 选中断点 刷新按钮 （下一行执行）
+	1. 代码调试，找到文件（Sources）
+	2. 选择调试位置
+	3. 添加断点
+	4. 继续执行、跳入跳出、逐行执行
+    继续执行到下一个断点图标，跳到下一行图标，逐行执行，跳入跳出
+    信息框：Breakpoints:断点信息
+                  Call Stack：到断点时正在执行的函数
+
+2019.3.1 第二节课
+   基本数据类型--值类型--栈区  例：var num1=10;var num2=num1;num1=20;
+   引用数据类型  
+var obj1={"name":"zhangsan"}
+
+var obj2=obj1;
+
+obj2.name="lisi";
+
+console.log(obj1);    //lisi
+

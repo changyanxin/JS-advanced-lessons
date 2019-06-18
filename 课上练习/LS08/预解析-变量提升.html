@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+	<meta charse="UTF-8"/>
+	<title>预解析</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//变量提升仅为将变量声明提升，变量的赋值仍在原位置
+	//局部变量:函数内var声明
+	console.log(a);
+	var a = 1;
+	console.log(a);
+
+	console.log(a);
+	if(true){
+		var a=1; 
+	}
+	console.log(a);
+
+	//该种情况下仅对变量进行定义的提升
+	console.log(foo);
+	function foo(){
+		console.log("hello world");
+	}
+	//函数提升在变量提升的下面
+	//函数与变量同在提升的是变量
+</script>
+</html>

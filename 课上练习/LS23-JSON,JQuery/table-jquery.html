@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body id="mybody">
+ 	<table id="tb1" width="400" height="400" border="1" align="center">
+ 		<tr class="even">
+ 			<td id="td1"></td>
+ 			<td></td>
+ 			<td></td>
+ 			<td></td>
+ 		</tr>
+
+ 		<tr class="odd">
+ 			<td></td>
+ 			<td></td>
+ 			<td></td>
+ 			<td></td>
+ 		</tr>
+
+ 		<tr class="even">
+ 			<td></td>
+ 			<td></td>
+ 			<td></td>
+ 			<td></td>
+ 		</tr>
+
+ 		<tr class="odd">
+ 			<td></td>
+ 			<td></td>
+ 			<td></td>
+ 			<td></td>
+ 		</tr>
+ 	</table> 
+
+ 	<form>
+ 		<input type="text"/>
+ 		<br/>
+ 		<input type="file"/>
+ 		<br/>
+ 		<input type="button"/>
+ 		<br/>
+ 		<input type="submit"/>
+ 		<br/>
+ 		<input type="checkbox"/>
+ 	</form>
+
+ 	
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script>
+	/*
+		$("")jquery包装集
+		选择器：id选择器，类选择器，标签选择器，层级选择器
+
+		后代选择器、子选择器
+	*/
+
+	/*
+		基本选择器
+	*/
+	$("#tb1 .even").css("background","green");
+	$("#tb1 td").css("background","red");
+
+	/*
+		过滤选择器	
+		eq(index) 选定特定索引值的元素
+		gt(index) 选定索引值大于index的元素
+		lt(index) 选定索引值小于index的元素
+		not(selector) 从特定集合中排除选择器为selector的元素
+	*/
+	$("td:first").css("background","yellow");
+	$("td:last").css("background","red");
+	$("td:even").css("background","blue");/*奇数*/
+	$("td:odd").css("background","blue");/*偶数*/
+	
+	$("td:eq(0)").css("background","black");
+	$("td:gt(1)").css("background","white");
+	$("td:lt(3)").css("background","yellow");
+	$("td:not(#td1)").css("background","pink");
+
+	/*
+		表单选择器
+	*/
+	$(":text").css("background","red");
+</script>
+
+
+
+</html>

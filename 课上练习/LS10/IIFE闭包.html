@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        IIFE 闭包
+    </title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+
+
+<script>
+    // 闭包：通过返回函数fn(1)内部定义的函数fn(2)来访问fn(1)内部的局部变量(x)
+    //访问函数中的局部变量
+	// function fn1(){
+ //        var x=1;
+ //        function fn2(){
+ //            return ++x;
+ //        }
+ //        return fn2();
+ //    }
+ //    var fn3=fn1();//指向的是一个函数
+ //    console.log(fn3);
+ //    console.log(fn3);
+
+    
+
+
+    //函数(addNum)内部定义的函数(return匿名函数)与其相关作用域中的变量(start)形成的实体，此时，start在一直内存中不会被释放
+    // function addNum(start){
+    //     return function(step){
+    //         start+=step;
+    //         return step;
+    //     }
+    // }
+    // //start在内存中不释放
+    // var fn3=addNum(12);
+    // console.log(fn3(1));
+    // console.log(fn3(1));
+    // console.log(fn3(1));
+
+
+    /*闭包所带来的两个影响
+        1.闭包可以让我们访问到函数内部定义的变量
+        2.闭包可以让关联作用域中的特定变量保存在内存中不释放
+    */
+    // function foo(){
+    //     var i=0;
+    //     function bar(){
+    //         console.log(++i);
+    //     }
+    //     return bar;
+    // }
+    // var fu1=foo();
+    // var fu2=foo();
+    // fu1();
+    // fu1();
+    // fu2();
+    // fu1();
+
+
+    // function foo(x){
+    //     var temp=10;
+    //     return function(y){
+    //         console.log(x+y,++temp)
+    //     }
+    // }
+    // var fee=foo(10);
+    // fee(10);
+
+    //非闭包
+    //  var temp=10;
+    //  function foo(){
+    //    return function(y){
+    //         console.log(y,++temp)
+    //     }
+    // }
+    // var fee=foo();
+    // fee();
+
+    //传入参数为对象的闭包
+    // function foo(x){
+    //     var temp=10;
+    //     return function(y){
+    //         x.count=x.count ? x.count+1 :1;
+    //         console.log(x+y+temp,x.count);
+    //     }
+    // }
+    // var age=new Number(2);
+    // var bar=foo(age);
+    // bar(10);
+    // bar(10);
+    // bar(10);
+
+    function counter(){
+        var n=0;
+        return {
+            count:function(){return ++n;},
+            reset:function(){n=0;return n}
+        }
+    }
+    var c=counter(),d=counter();
+    console.log(c.count());
+    console.log(d.count());
+    console.log(c.reset());
+    console.log(c.count());
+    console.log(d.count());
+
+    
+</script>
+
+</body>
+</html>

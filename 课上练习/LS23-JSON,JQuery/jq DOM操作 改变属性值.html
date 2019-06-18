@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery</title>
+
+    <style type="text/css">
+     	.imgborder{
+     		border:5px solid black;
+     	}
+    </style>
+
+</head>
+<body>
+	<img src="shaosiming.jpg" id="img1" class="bg">
+	<button id="btn">改变属性</button>
+	<button id="btn1">改变class</button>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script>
+	/*
+		attr()方法可以设置可以获取
+		removeAttr()移除特定属性
+	*/
+	$("#btn").click(function(){
+		$("#img1").attr("src","2.jpg");
+		$("#img1").attr("title","这是一张图片");
+		// alert($("img1").attr("title"));
+		$("#img1").removeAttr("title");
+	})
+
+	$("#btn1").click(function(){
+		$("#img1").addClass("imgborder");
+		$("#img1").removeClass("imgborder");
+	})
+
+	$("#img1").mouseover(function(){
+		$(this).addClass("imgborder");
+	})
+	$("#img1").mouseout(function(){
+		$(this).removeClass("imgborder");
+	})
+
+</script>
+
+
+
+
+</html>

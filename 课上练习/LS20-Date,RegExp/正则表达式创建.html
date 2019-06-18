@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式的创建</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+    
+</body>
+
+<script>
+	/*字面量直接创建*/
+	/*
+		/正则表达式的文本部分/正则表达式的标识符
+		[xyz] 匹配中括号中任意的字符
+		标识符：
+			g表示全局的1检索，获取所有的匹配项还是只获取第一个
+			i表示是否忽略大小写,严格遵循大小写（包含在匹配范围内的以及内容）
+	*/
+    var reg1 = /[bcf]at/gi;
+    console.log("a fAT bat, a faT cat".match(reg1));
+
+    /*通过构造函数RegExp实例化正则对象*/
+    var reg2 = new RegExp(/[bcf]at/,"gi");
+    var reg3 = new RegExp("[bcf]at","gi");
+
+
+    var reg1=/adf/gi;
+    var str="abcdef adf kill";
+    console.log(str.match(reg1));
+
+    var reg2 = /adf*/gi;
+    var str2="abcdef adf ad adffff kill";
+    console.log(str2.match(reg2));
+    /*************************仅以单个字符为单位*****************************/
+
+    //.表示任意单个字符
+    var reg3 = /a.c/gi;
+    var str3="abcdef adf kill ajc a c";
+    console.log(str3.match(reg3));
+    console.log(reg3)
+
+    /*
+		字符类别：
+			\d表示任意的阿拉伯数字
+			\D表示在特定位置上不是阿拉伯数字[^0-9]
+			\s表示匹配一个非空白字符
+			\w [A~Z，a~z,0~9]	
+    */
+    var reg4 = /a\ddc/gi;
+    var reg4_2 = /a\Ddc/gi;
+    var str4 = "a2dc a3dc a4dc adc";
+    var str4_2 = "a2dc a3dc a4dc abdc";
+	console.log(str4.match(reg4));
+    console.log(str4_2.match(reg4_2));
+
+    /*
+		字符集合
+			[xyz]：从中括号汇总的字符集合当中任取一个字符
+			[^xyz]:排除中括号中字符集和中的字符
+    */
+    var str5 = "atf btf ktf";
+    var reg5 = /[^abc]tf/gi;
+    console.log(str5.match(reg5));
+
+    /*
+		边界：
+			^匹配开始的字符
+			$匹配结束位置
+    */
+    var reg6=/^a[0-9]/gi;
+    var str6="a1 b2 c3 d4";
+    console.log(str6.match(reg6));
+
+    var reg7=/\dd$/gi;
+    var str7="a1d 32d 3g 4d";
+    console.log(str7.match(reg7));
+    console.log(reg7.test(str7));
+    console.log(reg7);
+
+
+
+    /*
+	数量词
+		a*表示匹配前一个表达式0次或者多次
+		a?表示之前的字符出现0次或者1次
+		a+表示之前的字符出现1次或者多次
+		x{m,n}
+
+    */
+    var reg8=/abc?/gi;
+    var str8="abc ab bc kkk";
+    console.log(str8.replace(reg8,"x"));
+
+    var reg9=/abc+/gi;
+    var str9="abc abcc ade abcccc";
+    console.log(str9.replace(reg2,"x"));
+
+    var reg10=/abc{1,3}/gi;
+    var str10="abc abcc abccc abcccc";
+    console.log(str10.replace(reg10,"x"));
+
+    /*
+	分组使用括号
+		分组可以看做当前正则表达式的子规则，分组匹配得到的内容，可用exec()的结果中查看
+
+    */
+    var reg11 = /(abc)\d/gi;
+    var str11 = "abc1efg2";
+    console.log(reg11.exec(str11));
+    var reg12 = /(ab)\d/gi;
+    var str12 = "ab31ef92";
+    console.log(reg12.exec(str12));
+    /*多个分组属性*/
+    var reg13 = /(abc\d)(ef\d)/gi;
+    var str13 = "abc1ef72";
+    console.log(reg13.exec(str13));
+    /*
+		反向引用通过\数字来引用前面出现的分组
+		数字表示前面出现的第几个分组（从1开始）
+    */
+    var reg14 = /(ss)a\1/gi;
+    //var reg15 = /(\d)a(\d)/gi;
+
+    var str14 = "ssassyz";
+    console.log(str14.replace(reg14,'x'));
+
+    /*
+		String.prototype
+		str.replace(reg,"替换的内容");
+
+    */
+    var reg15 = /(ss)abc\d/gi;
+    var str = "kkafd ssabc2";
+    console.log(str.match(reg15));
+</script>
+
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+	<meta charse="UTF-8"/>
+	<title>caller\callee\call\apply</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//arguments  实参多形参少，实参是一个类数组结构 
+	function fn1(x){
+		for (var i = 0; i < arguments.length; i++){
+			console.log(arguments[i]);
+		}
+	}
+	//函数名.length  表示的是形参的个数
+	console.log(fn1.length);
+
+	//caller
+	function fn2(){
+		console.log(fn2.caller);
+	}
+	function fn3(){
+		fn2;
+	}
+	fn2();
+	fn3();
+
+	//callee,递归的调用自身，常用于递归函数的调用，支持性不足
+
+
+
+
+	var objA = {"objName":"aaa"};
+	var objB = {"objName":"bbb"};
+	objA.foo = functio (){
+		console.log(this.objName);
+	}
+	objA.foo();
+//方法.call(对象)，切换调用的对象
+	objA.foo.call(objB);
+
+//原本的this指向使用构造函数实例化的对象
+	function Person (username){
+		this.username = username;
+	}
+	//Person.apply(this,[username,age])????????????
+	function Student(username,age){
+		Person.call(this,username);//调用Person的username为其赋值，this的指向仍为Student，以达到为Student赋值的目的,person内部的函数依然执行
+		this.age = age;//this指向Student的对象
+	}
+	var person = new Person("zhangsan");
+	var student = new Student("lisi",20);
+
+//原本的this指向使用构造函数实例化的对象
+	function Person (username，age){
+		this.username = username;
+	}
+
+	function Student(username,age){
+		Person.call(this,username,age);
+	}
+	var person = new Person("zhangsan");
+	var student = new Student("lisi",20);
+</script>
+</html>

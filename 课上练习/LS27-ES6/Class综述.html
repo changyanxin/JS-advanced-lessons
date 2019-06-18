@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 Class综述</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        constructor不写默认有
+    */
+    class Point{
+        constructor(){
+            this.x = 1;
+            this.y = 2;
+        }
+        showx(){
+            console.log(this.x);
+        }
+        showy(){
+            console.log(this.y);
+        }
+    }
+    console.log(typeof Point);
+    let p1 = new Point();
+    let p2 = new Point();
+    console.log(p1.__proto__ == Point.prototype);
+    console.log(p1.__proto__ == p2.__proto__);
+    p1.showx();
+
+    /*
+        使用static 方法(){}来添加静态方法
+        静态方法通过类调用
+        静态方法内部的this指向class本身
+    */
+    class Point1{
+        constructor(){
+            this.x = 1;
+        }
+        static showPoint(){
+            console.log(this);
+        }
+    }
+    Point1.showPoint();
+    /*
+        ************继承的实现方式*************
+    */
+    /*继承对象属性*/
+    let obj1 = {"x":2};
+    let obj2 = Object.create(obj1);
+    console.log(obj2.x);
+
+    let obj3 = {"y":3};
+    let obj4.__proto__ = obj3;
+    console.log(obj4.y);
+
+    /*函数的继承*/
+    function fn1(){
+        this.x = 1;
+    }
+    fn1.prototype.show = function(){
+        console.log(this.x);
+    }
+    let obj5 = new fn1();
+
+    function Child(x,y){
+        this.x = x;
+        this.y = y;
+    }
+    function Parent(x,y,z){
+        Child.call(this,x,y);
+        this.z = z;
+    }
+    let p1 = new Parent(1,2,3);
+    console.log(p1);
+    /*
+        子类继承父类 extends
+        在子类的构造函数里的super() 指向父类的构造函数
+        在子类中super()必须在this()前面
+
+        super在子类的原型方法中，指向父类的prototype
+    */
+    class Parent1{
+        constructor(x,y){
+            this.x = x;
+            this.y = y;
+        }
+        ParentShow(){
+            console.log("hello");
+        }
+    }
+    class Child1 extends Parent1{
+        constructor(x,y,z){
+            super(x,y);//super()指的是父类
+            this.z = z;
+        }
+        show(){
+            super.ParentShow();
+            console.log(this);
+        }
+    } 
+    let c1 = new Child1(1,2,3);
+    console.log(c1);
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6新增数据类型和数据结构</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        新增基本数据类型：Symbol，表示独一无二,唯一的值，不能使用new命令
+    */
+    let s1 = Symbol("s1");
+    let s2 = Symbol("s2");
+    let s3 = Symbol("s1");
+    console.log(s1 == s3);//false
+    /*
+        作为属性名的Symbol,永远都不会重复，形式：
+            对象[Symbol]
+            {
+                [Symbol]:属性值
+            }
+        遍历属性不会出现在for...in或者for...of中
+    */
+    let obj = {};
+    obj[s1] = "hello";
+    //obj.s1表示s1是一个属性名，并非Symbol值
+    let obj1 = {
+        [s1] : "world"
+    };
+    console.log(obj[s1]);
+    /*
+        Symbol.for()首先查看是否存在该描述信息的Symbol变量，存在的话直接获取，不存在的话直接获取 
+    */
+    let s4 = Symbol.for("foo");
+    let s5 = Symbol.for("foo");
+    console.log(s4 == s5);
+
+    let s6 = Symbol("foo");
+    console.log(Symbol.for("foo") == Symbol.for("foo"));
+</script>
+</html>

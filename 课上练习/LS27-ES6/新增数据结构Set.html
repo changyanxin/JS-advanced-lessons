@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6新增数据类型和数据结构</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        类似数组，无重复值
+    */
+    let s1 = new Set([1,2,3,4,5,6,1,2,3]);
+    console.log(s1);
+    for(let i of s1){
+        console.log(i);
+    }
+    /*
+        类似对象，“键”的范围不限于字符串
+        size,map.set("属性名","属性值"),map.get("属性名"),map.delete("属性名"),map.has("属性名"),map.clear("属性名"),map.keys(),map.values()
+    */
+    let m1 = new Map([
+        ['name','zhangsan'],
+        ['age',20],
+        ['sex','male']
+    ]);
+    console.log(m1.size);
+    for(let i of m1){
+        console.log(i);
+    }
+    console.log(m1.keys());
+    for(var j of m1.keys()){
+        console.log(j);
+    }
+    m1.set("wight","60kg");
+    m1.set("hobby","basketball");
+    m1.get("username");
+    m1.delete("hobby");
+    m1.has("age");
+</script>
+</html>

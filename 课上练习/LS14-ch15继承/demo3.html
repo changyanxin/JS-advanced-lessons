@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于构造函数实现的原型继承</title>
+
+    <style type="text/css">
+       
+    </style>
+
+</head>
+<body>
+
+
+<script>
+    //定义一个车（car）的对象，height，width，weight
+
+    //创建一个小轿车的对象，继承车的相关属性，具有自己的color，seatNum
+
+    var car={
+        height:150,
+        width:200,
+        weight:1000
+    };
+    var smallCar = Object.create(car);
+    smallCar.color='red';
+    smallCar.seatNum=6;
+
+
+    // var smallCar2 = Object.create(car);
+    // function createSmallcar(color,seatNum){
+    //     this.color=color;
+    //     this.seatNum=seatNum;
+    // }
+    // createSmallcar.prototype=smallCar2;
+    // console.log(smallCar2);
+
+    function Car(height,width,weight){
+        this.height=height;
+        this.width=width;
+        this.weight=weight;
+    }
+    Car.prototype.other=function(color,seatNum){
+        this.color=color;
+        this.seatNum=seatNum;
+    }
+    var smallCar1=new Car(150,200,2000);
+    smallCar1.other('blue',2);
+    console.log(smallCar);
+    console.log(smallCar1);
+
+    
+
+</script>
+
+</body>
+</html>

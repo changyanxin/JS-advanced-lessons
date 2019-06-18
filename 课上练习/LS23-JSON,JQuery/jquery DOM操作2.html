@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery</title>
+
+    <style type="text/css">
+     	#container{
+     		height:400px;
+     		width:800px;
+     		margin:0 auto;
+     		border:1px solid red;
+     	}
+     	#img1{
+     		width:150px;
+     	}
+     	#btnlist{
+     		width:100px;
+     		margin:0 auto;
+     	}
+    </style>
+
+</head>
+<body>
+	
+ 	<div id="container">
+ 		<img src="shaosiming.jpg" id="img1"/>
+ 	</div>
+ 	<div id="btnlist">
+ 		<button id="after">after</button>
+ 		<button id="insertafter">insertafter</button>
+ 		<button id="before">before</button>
+ 	</div>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script>
+	/*
+		1. 向特定元素的后面插入新的节点
+		after(),insertAfter()
+		2. 想特点元素的前面插入节点
+		before(),insertBefore()
+		3. 向特定元素便签内部的最后插入节点
+		append()
+		4. 向特定元素的
+		prepend(),prependTo()
+	*/
+	$("#after").click(function(){
+		var $img2 = $("<img src = '2.jpg'>");
+		$("#img1").after("$img2");
+	})
+	$("#insertafter").click(function(){
+		var $img2 = $("<img src = '2.jpg'>");
+		$("#img1").insertAfter("$img2");
+	})
+	$("#before").click(function(){
+		var $img2 = $("<img src = '2.jpg'>");
+		$("#img1").before("$img2");
+	})
+</script>
+</script>
+
+
+
+
+</html>
